@@ -1,0 +1,166 @@
+import { Component } from "react-dom/client";
+import ParticlesBg from "particles-bg";
+import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
+import Navigation from "./components/Navigation/Navigation";
+import Signin from "./components/Signin/Signin";
+import Register from "./components/Register/Register";
+import Logo from "./components/Logo/Logo";
+import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
+import Rank from "./components/Rank/Rank";
+import './App.css';
+
+/* 
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import { useState } from 'react'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a> 
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+} 
+*/
+
+const initialState = {
+  input: "", 
+  imageUrl: "",
+  box: {},
+  route: "signin",
+  isSignedIn: false,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: "",
+  }
+};
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = initialState; 
+  }
+  loadUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined: data.joined
+      }
+    })
+  };
+
+  //calculates the edges of the bounding_box for image faces
+  calculateFaceLocation = (data) => {
+    const clarifaiFace = data.outputs[length].data.regions[length].region_info.bounding_box;
+    const image = document.getElementById("inputimage");
+    const width = Number(image.width);
+    const height = Number(image.height);
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
+    };
+  };
+
+  displayFaceBox = (box) => {
+    this.setState({ box: box });
+  };
+
+  onInputChange = (event) => {
+    this.setState({ input: event.target.value });
+  };
+
+  onImageSubmit = () => {
+    this.setState({ imageUrl: this.state.input });
+    fetch("https://smartbrainapi-mxdx.onrender.com/imageurl", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+            },
+      body: JSON.stringify({
+        input: this.state.input
+      })
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response) {
+        fetch("https://smartbrainapi-mxdx.onrender.com/image", {
+          method: "put",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: this.state.user.id
+          })
+        })
+        .then(response => response.json())
+        .then(count => {
+          this.setState(Object.assign(this.state.user, { entries: count }))
+        })
+        .catch(console.log)
+      }
+      this.displayFaceBox(this.calculateFaceLocation(response))
+    })
+    .catch(err => console.log(err));
+  };
+
+  onRouteChange = (route) => {
+    if (route === "signout") {
+      this.setState(initialState)
+    } else if (route === "home") {
+      this.setState({ isSignedIn: true });
+    }
+    this.setState({ route: route });
+  };
+
+  render() {
+    //render objects that use this.state prefix //
+    const { isSignedIn, imageUrl, route, box } = this.state;
+    return (
+        <div className="App">
+        <ParticlesBg color="#000000" num={200} type="cobweb" bg={true} />
+        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+        {route === "home" ?
+          <div>
+            <Logo />
+            <Rank
+              name={this.state.user.name} entries={this.state.user.entries} />
+            <ImageLinkForm onInputChange={this.onInputChange} onImageSubmit={this.onImageSubmit} />
+            <FaceRecognition box={box} imageUrl={imageUrl} />
+					</div>
+					: (route === "signin"
+						? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+						: <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+						)}
+          </div>
+    )
+  }
+}
+
+export default App;
