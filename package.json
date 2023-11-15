@@ -1,5 +1,5 @@
 {
-  "name": "FacialRecognitionApp",
+  "name": "facialrecognitionapp",
   "homepage": "https://nyxn1n9.github.io/FacialRecognitionApp/",
   "private": true,
   "version": "0.0.0",
@@ -28,5 +28,13 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "vite": "^4.5.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://nyxn1n9.github.io/FacialRecognitionApp.git/"
+  },
+  "author": "Nyx Neal",
+  "license": "ISC"
 }
