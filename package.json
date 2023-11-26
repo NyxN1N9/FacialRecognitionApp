@@ -1,9 +1,8 @@
 {
   "name": "facialrecognitionapp",
+	"homepage":"https://NyxN1N9.github.io/FacialRecognitionApp",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
-	"main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -53,5 +52,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+	"description": "react built",
+  "main": "index.js",
+  "author": "NyxN1N9",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NyxN1N9/FacialRecognitionApp.git"
   }
 }
