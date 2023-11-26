@@ -1,6 +1,6 @@
-import Tilt from "react-parallax-tilt";
-import brain from "./brain.png";
-import "./Logo.css";
+import Tilt from "react-parallax-tilt"
+import brain from "./brain.png"
+import "./Logo.css"
 
 const Logo = () => {
   return (
@@ -18,4 +18,4 @@ const Logo = () => {
   )
 }
 
-export default Logo;
+export default Logo

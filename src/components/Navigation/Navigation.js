@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const Navigation = ({ onRouteChange, isSignedIn }) => {
   if (isSignedIn) {
     return (
@@ -9,7 +10,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
           Sign Out
         </p>
       </nav>
-    );
+    )
   } else {
     return (
       <nav style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -26,8 +27,8 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
           Register
         </p>
       </nav>
-    );
+    )
   }
-};
+}
 
-export default Navigation;
+export default Navigation

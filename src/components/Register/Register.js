@@ -1,4 +1,5 @@
-import { Component } from "react";
+/* eslint-disable react/prop-types */
+import { Component } from "react"
 
 class Register extends Component {
   constructor(props) {
@@ -12,15 +13,15 @@ class Register extends Component {
 
   onEmailChange = (event) => {
     this.setState({ email: event.target.value });
-  };
+  }
 
   onPasswordChange = (event) => {
     this.setState({ password: event.target.value });
-  };
+  }
 
   onNameChange = (event) => {
     this.setState({ name: event.target.value });
-  };
+  }
 
   onSubmitSignIn = () => {
     fetch("https://smartbrainapi-mxdx.onrender.com/register", {
@@ -96,8 +97,8 @@ class Register extends Component {
           </div>
         </main>
       </article>
-    );
+    )
   }
 }
 
-export default Register;
+export default Register

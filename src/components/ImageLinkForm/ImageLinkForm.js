@@ -1,4 +1,5 @@
-import "./ImageLinkForm.css";
+/* eslint-disable react/prop-types */
+import "./ImageLinkForm.css"
 
 const ImageLinkForm = ({ onInputChange, onImageSubmit }) => {
   return (
@@ -16,7 +17,7 @@ const ImageLinkForm = ({ onInputChange, onImageSubmit }) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ImageLinkForm;
+export default ImageLinkForm

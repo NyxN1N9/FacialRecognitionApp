@@ -1,4 +1,5 @@
-import { Component } from "react";
+/* eslint-disable react/prop-types */
+import { Component } from "react"
 
 class Signin extends Component {
   constructor(props) {
@@ -11,11 +12,11 @@ class Signin extends Component {
 
   onEmailChange = (event) => {
     this.setState({ signInEmail: event.target.value });
-  };
+  }
 
   onPasswordChange = (event) => {
     this.setState({ signInPassword: event.target.value });
-  };
+  }
 
   onSubmitSignIn = () => {
     fetch("https://smartbrainapi-mxdx.onrender.com/signin", {
@@ -23,7 +24,7 @@ class Signin extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.signInEmail,
-        password: this.state.signInPassword,
+        password: this.state.signInPassword
       }),
     })
       .then(response => response.json())
@@ -33,7 +34,7 @@ class Signin extends Component {
           this.props.onRouteChange("home");
         }
       })
-  };
+  }
 
   render() {
     const { onRouteChange } = this.props;
@@ -91,4 +92,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default Signin

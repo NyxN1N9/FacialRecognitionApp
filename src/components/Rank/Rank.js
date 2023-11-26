@@ -1,4 +1,5 @@
-import "./Rank";
+/* eslint-disable react/prop-types */
+import "./Rank"
 
 const Rank = ({ name, entries }) => {
   return (
@@ -12,4 +13,4 @@ const Rank = ({ name, entries }) => {
   )
 }
 
-export default Rank;
+export default Rank
