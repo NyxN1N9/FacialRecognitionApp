@@ -1,6 +1,5 @@
 {
   "name": "facialrecognitionapp",
-  "homepage": "https://nyxn1n9.github.io/FacialRecognitionApp/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+		"start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -39,13 +41,6 @@
     "eslint-plugin-react-refresh": "^0.4.4",
     "vite": "^5.0.2"
   },
-  "description": "",
-  "repository": {
-    "type": "git",
-    "url": "git+https://nyxn1n9.github.io/FacialRecognitionApp.git/"
-  },
-  "author": "Nyx Neal",
-  "license": "ISC",
 	"browserslist": {
     "production": [
       ">0.2%",
