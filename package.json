@@ -1,19 +1,19 @@
 {
   "name": "facialrecognitionapp",
-	"homepage":"https://github.com/NyxN1N9/FacialRecognitionApp",
+	"homepage":"https://NyxN1N9.github.io/FacialRecognitionApp",
   "private": true,
   "version": "0.0.0",
-  "scripts": {
+	"scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-		"start": "react-scripts start",
+    "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "dependencies": {
-		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+	"dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.23.4",
     "@svgr/plugin-svgo": "^8.1.0",
     "@svgr/webpack": "^8.1.0",
@@ -31,7 +31,7 @@
     "tachyons": "^4.12.0"
   },
   "devDependencies": {
-		"@babel/plugin-transform-private-property-in-object": "^7.22.11",
+    "@babel/plugin-transform-private-property-in-object": "^7.22.11",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.0",
