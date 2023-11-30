@@ -1,6 +1,6 @@
 import { Component } from "react"
 import ParticlesBg from "particles-bg"
-import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js"
+import FaceRecognition from "./components/FacialRecognition/FacialRecognition"
 import Navigation from "./components/Navigation/Navigation"
 import Signin from "./components/Signin/Signin"
 import Register from "./components/Register/Register"
